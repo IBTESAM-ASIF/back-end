@@ -7,11 +7,7 @@ app = Flask(__name__)
 def hello_world():
     return "<h1>Hello, World!</h1>"
 
-@app.route("/connect")
-def about():
-    return "<h1>About</h1>"
-
-@app.route("/results")
+@app.route("/about")
 def about():
     return "<h1>About</h1>"
 
