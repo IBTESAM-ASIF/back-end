@@ -19,6 +19,9 @@ def get_tweets(user, howmany):
     tweets = api.user_timeline(screen_name=user, count=howmany, include_rts = True)#max tweets is 200
     return tweets
 
+def print_tweets(tweets): 
+    for tweet in tweets:
+        print(tweet.text)
 
 def tweet_response_to_jsonfile(tweets):
     with open('tweet.json', 'w', encoding='utf-8') as f:
