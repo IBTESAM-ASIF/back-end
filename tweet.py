@@ -1,5 +1,8 @@
 import tweepy
 import json
+import csv
+
+import model
 
 key = open('api_key.txt','r')
 
@@ -26,3 +29,18 @@ def print_tweets(tweets):
 def tweet_response_to_jsonfile(tweets):
     with open('tweet.json', 'w', encoding='utf-8') as f:
         json.dump(tweets[0]._json, f, ensure_ascii=False, indent=4)
+
+
+###############
+##Main Method##
+###############
+def get_questionable_keywords_emotions(tweets):
+    
+    for tweet in tweets:
+        if(model.is_Tweet_Questionable(tweet) == True):
+            #get sentiments & keywords from all the questionable tweets
+            row = model.getSentimentAndKeywords(tweet)
+
+#tweet response object, not tweet text
+def preprocess_tweet(tweet):
+    return "".join(c for c in tweet.text if c.isalpha())

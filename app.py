@@ -9,11 +9,11 @@ def hello_world():
 
 @app.route("/connect")
 def about():
-    return "<h1>About</h1>"
+    return "<h1>connect</h1>"
 
 @app.route("/results")
 def about():
-    return "<h1>About</h1>"
+    return "<h1>results</h1>"
 
 if __name__ == '__main__':
   
