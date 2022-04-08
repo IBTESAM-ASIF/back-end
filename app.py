@@ -3,7 +3,7 @@ from flask import Flask
 from flask import render_template
 
 from model import model
-myModel = model()
+gpt3 = model()
 from tweet import tweetGetter
 tweeter = tweetGetter()
 
@@ -18,18 +18,29 @@ def connect():
     return render_template('connect.html')
 
 
+def preprocess_tweet(tweet):
+    words = tweet.split(" ")
+    for w in words:
+        if "https:" in w or "@" in w:
+            words.pop(words.index(w))
+        
+    return " ".join(c for c in words if c.isalpha())
+
 @app.route("/results")
 def results():
     results = "<h1>Results</h1>"
-
-    response = tweeter.get_tweets("Benjome1",10)#[tweetobjects]
-    print(response)
+    user = "thelazyaz"
+    response = tweeter.get_tweets(user,10)#[tweetobjects]
     for r in response:
-        print(r.text)        
+        print(r.text)
+        if(gpt3.is_Tweet_Questionable(preprocess_tweet(r.text)) == True):
+            link = "https://twitter.com/" + user + "/status/" + r.id_str
+            results += "<ul> <a href=" +"\"{l}\"".format(l=link)  + ">" + r.text + "</a> : " + gpt3.getSentimentAndKeywords(preprocess_tweet(r.text)) + "</ul>"
+
     return results
 
 if __name__ == '__main__':
   
     # run() method of Flask class runs the application 
     # on the local development server.
-    app.run()
+    app.run(debug=True)

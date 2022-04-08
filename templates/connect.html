@@ -15,7 +15,11 @@
             </span>
         </section>
     </main>
+    <br/>
     <form action="/results">
+        <label for="username">Enter your Twitter User Name:</label>
+        <input type="text" id="username" name="username"><br><br>
+
         <input type="image" name="submit_button" value="Connect to Twitter" src ="{{ url_for('static',filename='./assets/twitter.png')}}">
     </form>
 </body>

@@ -33,22 +33,3 @@ class tweetGetter:
     def tweet_response_to_jsonfile(tweets):
         with open('tweet.json', 'w', encoding='utf-8') as f:
             json.dump(tweets[0]._json, f, ensure_ascii=False, indent=4)
-
-
-    ###############
-    ##Main Method##
-    ###############
-    def get_questionable_keywords_emotions(tweets):#tweet list response Object
-        susTweets = []
-        for tweet in tweets:
-            if(gpt3.is_Tweet_Questionable(gpt3.preprocess_tweet(tweet.text)) == True):
-                susTweets.append(tweet.text)
-                susTweets.append(gpt3.getSentimentAndKeywords(gpt3.preprocess_tweet(tweet.text)))
-        if len(susTweets) == 0:
-            return ["No Questionable Tweets Found"]
-        else:
-            return susTweets
-
-    #1 tweet response object, not tweet text
-    def preprocess_tweet(tweet):
-        return "".join(c for c in tweet.text if c.isalpha())
