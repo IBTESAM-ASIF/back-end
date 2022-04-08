@@ -1,0 +1,21 @@
+<head>
+    <title>Eris - Connect Account</title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='./assets/img/logo/svg/Logo-Background.svg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='./assets/css/index.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='./assets/css/connect.css')}}">
+</head>
+<body>
+    <main>
+        <section>
+            <h1>Verify Account</h1>
+            <span>
+                Before we can get your results, we first need you to verify your account
+            </span>
+        </section>
+    </main>
+    <form action="/results">
+        <input type="image" name="submit_button" value="Connect to Twitter" src ="{{ url_for('static',filename='./assets/twitter.png')}}">
+    </form>
+</body>

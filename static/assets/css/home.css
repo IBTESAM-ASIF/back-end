@@ -1,0 +1,64 @@
+/* This stylesheet is for the home screen's specific styles */
+
+main{
+    margin-bottom: 100px;
+}
+
+section {
+    margin: 50px;
+}
+
+/* Top section */
+
+#top{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#top img{
+    width: 180px;
+    height: 99px;
+}
+
+#top span{
+    font-size: 42px;
+    margin-left: 15px;
+}
+
+#top h1{
+    margin: 0;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+#top h3{
+    font-size: 18px;
+    margin: 0;
+    font-weight: normal;
+    opacity: 0.75;
+    line-height: 1.25;
+}
+
+/* Middle section */
+
+#middle{
+    opacity: 0.75;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Bottom section */
+
+#bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bottom button{
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.2);
+    cursor: pointer;
+}

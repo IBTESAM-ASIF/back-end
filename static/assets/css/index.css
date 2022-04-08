@@ -1,0 +1,41 @@
+/* This is stylesheet is only for styles in ALL screens */
+
+@font-face{
+    font-family: "Open Sans";
+    src: url("../fonts/open_sans/statis/OpenSans/OpenSans-Regular.ttf");
+}
+
+html{
+    display: flex;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background: linear-gradient(#A85EE2, #9136D8);
+}
+
+button{
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #68A9EB;
+    transition: 0.5s;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+button:active{
+    opacity: 0.6;
+}
+
+*{
+    font-family: "Open Sans", sans-serif;
+    color: white;
+}

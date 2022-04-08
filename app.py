@@ -1,19 +1,32 @@
+from distutils.log import debug
 from flask import Flask
+from flask import render_template
 
+from model import model
+myModel = model()
+from tweet import tweetGetter
+tweeter = tweetGetter()
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello_world():
-    return "<h1>Hello, World!</h1>"
+def index():
+    return render_template('index.html')
 
 @app.route("/connect")
-def about():
-    return "<h1>connect</h1>"
+def connect():
+    return render_template('connect.html')
+
 
 @app.route("/results")
-def about():
-    return "<h1>results</h1>"
+def results():
+    results = "<h1>Results</h1>"
+
+    response = tweeter.get_tweets("Benjome1",10)#[tweetobjects]
+    print(response)
+    for r in response:
+        print(r.text)        
+    return results
 
 if __name__ == '__main__':
   
