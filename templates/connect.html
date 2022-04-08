@@ -5,6 +5,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static',filename='./assets/css/index.css')}}">
     <link rel="stylesheet" href="{{ url_for('static',filename='./assets/css/connect.css')}}">
+    <!-- Twitter icon import -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <main>
@@ -13,13 +15,20 @@
             <span>
                 Before we can get your results, we first need you to verify your account
             </span>
+            <br>
+            <form action="/results">
+                <p>
+                    <label for="username">
+                        Enter your Twitter User Name:
+                    </label>
+                    <input type="text" id="username" name="username">
+                </p>
+                <br><br>
+                <button type="submit">
+                    <i class="fab fa-twitter"></i>
+                    Connect to Twitter
+                </button>
+            </form>
         </section>
     </main>
-    <br/>
-    <form action="/results">
-        <label for="username">Enter your Twitter User Name:</label>
-        <input type="text" id="username" name="username"><br><br>
-
-        <input type="image" name="submit_button" value="Connect to Twitter" src ="{{ url_for('static',filename='./assets/twitter.png')}}">
-    </form>
 </body>

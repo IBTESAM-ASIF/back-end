@@ -25,6 +25,7 @@ button{
     border: none;
     background-color: #68A9EB;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 button:hover{
@@ -33,6 +34,20 @@ button:hover{
 
 button:active{
     opacity: 0.6;
+}
+
+input[type="text"]{
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    color: rgb(0, 0, 0, 0.75);
+    transition: 0.5s;
+}
+
+input[type="text"]:focus{
+    outline: none;
 }
 
 *{
