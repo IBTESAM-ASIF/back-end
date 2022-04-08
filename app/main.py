@@ -38,9 +38,3 @@ def results():
             results += "<ul> <a href=" +"\"{l}\"".format(l=link)  + ">" + r.text + "</a> : " + gpt3.getSentimentAndKeywords(preprocess_tweet(r.text)) + "</ul>"
 
     return results
-
-if __name__ == '__main__':
-  
-    # run() method of Flask class runs the application 
-    # on the local development server.
-    app.run()
