@@ -24,6 +24,9 @@ class tweetGetter:
 
     def get_tweets(self, user, howmany):
         tweets = self.api.user_timeline(screen_name=user, count=howmany, include_rts = True)#max tweets is 200
+        for tweet in tweets:
+            if not tweet.text.isalpha():
+                tweets.pop(tweets.index(tweet))
         return tweets
 
     def print_tweets(tweets): 
