@@ -104,7 +104,12 @@ def results():
         #print(s)
         #print(k)
         #print(links)
-        return render_template('results.html', theCount = range(count), allTweets=quotes, theFeelings=feelings, theKeys=keys, theLinks=links )
+
+        if count == 0:
+            return render_template('results.html', flagged=True, isFlagged="No Flagged Tweets Found",theCount = range(count), allTweets=quotes, theFeelings=feelings, theKeys=keys, theLinks=links )
+
+
+        return render_template('results.html', flagged=False, isFlagged="Flagged Tweets",theCount = range(count), allTweets=quotes, theFeelings=feelings, theKeys=keys, theLinks=links )
         
     else:
         #return redirect(url_for('connect', connect = c, Invalid="Your Account Could Not Be Verified, Try Again"))

@@ -13,7 +13,8 @@
     <h1>Here's What We Found</h1>
     <section class="container">
         <div class="left-half">
-            <h3>Flaggged Tweets</h3>
+            <h3>{{isFlagged}}</h3>
+            {% if not flagged %}
             <table>
                     <th>Tweets</th>
                     <th>Emotions</th>
@@ -26,13 +27,16 @@
                 </tr>
             {%  endfor %}
             </table>
+            {% endif %}
         </div>
+        {% if not flagged %}
         <div class="right-half">
             <h2>Tweet Analysis</h2>
             <span>
                 <img src="{{ url_for('static',filename='./assets/img/examplepiechart.png') }}">
             </span>
         </div>
+        {% endif %}
     </section>
 
 </body>
