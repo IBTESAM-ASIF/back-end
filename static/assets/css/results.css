@@ -1,0 +1,51 @@
+table, td, th, tr{
+    border: 1px solid;
+    border-color: #000000;
+    color: #000000;
+    text-align: center;
+    background-color: #ffffff;
+    font-size : 0.75rem
+  }
+
+  a{
+    color: #000000;
+  }
+  
+  html, body, section {
+    height: 100%;
+    width: 100%;
+    font-size: 125%;
+  }
+  
+  body {
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    line-height: 150%;
+    text-align: center;
+  }
+  
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  /* Pattern styles */
+  .container {
+    display: flex;
+  }
+  
+  .left-half {
+    flex: 50%;
+    padding: 1rem 0 2rem 1.5rem;
+  }
+  
+  .right-half {
+    flex: 50%;
+    padding: 1.5rem 0 2rem 1rem;
+  }

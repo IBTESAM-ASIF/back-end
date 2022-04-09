@@ -15,7 +15,7 @@ body{
     justify-content: center;
     align-items: center;
     flex: 1;
-    background: linear-gradient(#A85EE2, #9136D8);
+    background: #A85EE2;
 }
 
 button{

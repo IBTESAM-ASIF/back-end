@@ -1,0 +1,38 @@
+<head>
+    <title>Eris</title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='./assets/img/logo/svg/Logo-Background.svg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='./assets/css/index.css')}}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static',filename='./assets/css/home.css')}}">-->
+    <link rel="stylesheet" href="{{ url_for('static',filename='./assets/css/results.css')}}">
+</head>
+<body>
+    <br>
+    <br>
+    <h1>Here's What we Found</h1>
+    <section class="container">
+        <div class="left-half">
+            <h3>Flaggged Tweets</h3>
+            <table>
+                    <th>Tweets</th>
+                    <th>Emotions</th>
+                    <th>Keywords</th>
+            {% for i in theCount %}
+                <tr>
+                    <td><a href ="{{theLinks[i.index0]}}">{{allTweets[loop.index0]}}</a></td>
+                    <td>{{theFeelings[loop.index0]}}</td>
+                    <td>{{theKeys[loop.index0]}}</td>
+                </tr>
+            {%  endfor %}
+            </table>
+        </div>
+        <div class="right-half">
+            <h2>Tweet Analysis</h2>
+            <span>
+                <img src="{{ url_for('static',filename='./assets/img/examplepiechart.png') }}">
+            </span>
+        </div>
+    </section>
+
+</body>

@@ -2,6 +2,7 @@ from distutils.log import debug
 from flask import Flask, redirect, url_for
 from flask import render_template
 from flask import request
+import matplotlib.pyplot as plt
 import random
 
 from model import model
@@ -35,21 +36,76 @@ def preprocess_tweet(tweet):
 
 @app.route("/results",  methods=['POST'])
 def results():
+    results = ""
     user = request.form['username']
     response = tweeter.get_tweets(user, 1)
-    correctCode = ""
-    for r in response:
-        correctCode = r.text
+    """
+    for tweet in tweets:
+            if not tweet.text.isalpha():
+                tweets.pop(tweets.index(tweet))"""
+    correctCode = c
+    """for r in response:
+        correctCode = r.text"""
+
+    count = 0
+    quotes = []
+    links = []
+    feelings=[]
+    keys = []
+
     if correctCode == c:
-        results = "<h1>Results</h1>"
-        response = tweeter.get_tweets(user,10)#[tweetobjects]
+        response = tweeter.get_tweets("thelazyaz",2)#[tweetobjects]
         for r in response:
             print(r.text)
             if(gpt3.is_Tweet_Questionable(preprocess_tweet(r.text)) == True):
+                quotes.append(r.text)
+                count +=1
                 link = "https://twitter.com/" + user + "/status/" + r.id_str
-                results += "<ul> <a href=" +"\"{l}\"".format(l=link)  + ">" + r.text + "</a> : " + gpt3.getSentimentAndKeywords(preprocess_tweet(r.text)) + "</ul>"
+                links.append(link)
+                sentiment = gpt3.getSentiment(preprocess_tweet(r.text))
+                keywords = gpt3.getKeywords(preprocess_tweet(r.text))
+                
+                s = sentiment.split(" ")[1:]
+                s = " ".join(s)
+                feelings.append(s)
+                k = keywords.split(" ")[1:]
+                k = " ".join(k)
+                keys.append(k)
 
-        return results
+                joycount = 0
+                fearcount = 0
+                sadnesscount = 0
+                disgustcount =0
+                angercount = 0
+                for z in feelings:
+                    if(z.lower() == "joy"):
+                        joycount += 1
+                    elif(z.lower() == "fear"):
+                        fearcount += 1
+                    elif(z.lower() == "sadness"):
+                        sadnesscount += 1
+                    elif(z.lower() == "disgust"):
+                        disgustcount += 1
+                    elif(z.lower() == "anger"):
+                        angercount += 1
+                mylabels = { "Joy":joycount, "Fear":fearcount, "Sadness":sadnesscount, "Disgust":disgustcount, "Anger":angercount }
+                names = [key for key,value in mylabels.items() if value!=0]
+                values = [value for value in mylabels.values() if value!=0]
+
+                fig = plt.figure()
+                fig.patch.set_facecolor('#A85EE2')
+                plt.pie(values, labels = names, autopct='%.1f%%')
+                plt.rcParams.update({'text.color': "white"})
+                plt.savefig('static/assets/img/examplepiechart.png')
+
+                #\"{l}\"   .format(l=link)
+                #results += "<tr> <td><a href=" +"\"#\""  + ">" + r.text + "</a> </td> <td>" + s + "</td> <td>" +k +"</td></tr>"
+        #print(range(count))
+        #print(quotes)
+        #print(s)
+        #print(k)
+        #print(links)
+        return render_template('results.html', theCount = range(count), allTweets=quotes, theFeelings=feelings, theKeys=keys, theLinks=links )
         
     else:
         #return redirect(url_for('connect', connect = c, Invalid="Your Account Could Not Be Verified, Try Again"))
