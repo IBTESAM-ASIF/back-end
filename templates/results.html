@@ -20,7 +20,7 @@
                     <th>Keywords</th>
             {% for i in theCount %}
                 <tr>
-                    <td><a href ="{{theLinks[i.index0]}}">{{allTweets[loop.index0]}}</a></td>
+                    <td><a href ="{{theLinks[loop.index0]}}">{{allTweets[loop.index0]}}</a></td>
                     <td>{{theFeelings[loop.index0]}}</td>
                     <td>{{theKeys[loop.index0]}}</td>
                 </tr>
