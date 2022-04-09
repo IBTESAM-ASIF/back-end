@@ -7,19 +7,26 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='./assets/css/connect.css')}}">
 </head>
 <body>
+    <h1>{{Invalid}}</h1>
     <main>
-        <section>
+        <section  id="top">
             <h1>Verify Account</h1>
             <span>
                 Before we can get your results, we first need you to verify your account
             </span>
         </section>
-    </main>
-    <br/>
-    <form action="/results">
-        <label for="username">Enter your Twitter User Name:</label>
-        <input type="text" id="username" name="username"><br><br>
+        <section id="middle">
+        <br/>
+        <form method="POST" action="/results"> <!--action="/results"-->
+            <label for="username">Enter your Twitter User Name:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <h1>Your Code is: {{connect}}</h1>
+            <h3>Copy this code and Tweet it on your account to verify, then click the button below</h3>
+            <button type="submit" id="connect" name="submit_button" src ="{{ url_for('static',filename='./assets/twitter.png')}}">Connect to Twitter</button>
+        </form>
+    </section>
 
-        <input type="image" name="submit_button" value="Connect to Twitter" src ="{{ url_for('static',filename='./assets/twitter.png')}}">
-    </form>
+</section>
+
+    </main>
 </body>
