@@ -36,16 +36,15 @@ def preprocess_tweet(tweet):
 
 @app.route("/results",  methods=['POST'])
 def results():
-    results = ""
     user = request.form['username']
     response = tweeter.get_tweets(user, 1)
     """
     for tweet in tweets:
             if not tweet.text.isalpha():
                 tweets.pop(tweets.index(tweet))"""
-    correctCode = c
-    """for r in response:
-        correctCode = r.text"""
+    correctCode = ""
+    for r in response:
+        correctCode = r.text
 
     count = 0
     quotes = []
@@ -54,7 +53,7 @@ def results():
     keys = []
 
     if correctCode == c:
-        response = tweeter.get_tweets("thelazyaz",2)#[tweetobjects]
+        response = tweeter.get_tweets(user,20)#[tweetobjects]
         for r in response:
             print(r.text)
             if(gpt3.is_Tweet_Questionable(preprocess_tweet(r.text)) == True):
