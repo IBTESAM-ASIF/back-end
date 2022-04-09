@@ -1,3 +1,4 @@
+from itsdangerous import base64_decode, base64_encode
 import openai
 
 class model:
@@ -6,7 +7,9 @@ class model:
 
     keys = key.readlines()
 
-    openai.api_key = keys[4].strip()
+    encoded = keys[4].strip()
+
+    openai.api_key = bytes.fromhex(encoded).decode('utf-8')
 
     def getSentimentAndKeywords(self, tweet):
         response = openai.Completion.create(
