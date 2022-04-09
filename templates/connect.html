@@ -5,15 +5,19 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static',filename='./assets/css/index.css')}}">
     <link rel="stylesheet" href="{{ url_for('static',filename='./assets/css/connect.css')}}">
+    <!-- Twitter icon import -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <h1>{{Invalid}}</h1>
     <main>
         <section  id="top">
             <h1>Verify Account</h1>
+            <br><br>
             <span>
                 Before we can get your results, we first need you to verify your account
             </span>
+            <br>
         </section>
         <section id="middle">
         <br/>
@@ -24,9 +28,7 @@
             <h3>Copy this code and Tweet it on your account to verify, then click the button below</h3>
             <button type="submit" id="connect" name="submit_button" src ="{{ url_for('static',filename='./assets/twitter.png')}}">Connect to Twitter</button>
         </form>
-    </section>
-
-</section>
+        </section>
 
     </main>
 </body>
